@@ -1,0 +1,22 @@
+#@ load("@ytt:data", "data")
+---
+apiVersion: cert-manager.io/v1alpha2
+kind: Certificate
+metadata:
+  name: eduk8s-tls
+  namespace: eduk8s
+spec:
+  commonName: #@ "*.ws.{}".format(data.values.ingress.domain)
+  dnsNames:
+  - #@ "*.ws.{}".format(data.values.ingress.domain)
+  duration: 2160h0m0s
+  issuerRef:
+    kind: ClusterIssuer
+    name: letsencrypt-contour-cluster-issuer
+  keyAlgorithm: rsa
+  keyEncoding: pkcs1
+  keySize: 2048
+  organization:
+  - vmware
+  renewBefore: 360h0m0s
+  secretName: eduk8s-tls

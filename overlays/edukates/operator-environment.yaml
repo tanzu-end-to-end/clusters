@@ -1,0 +1,25 @@
+#@ load("@ytt:overlay", "overlay")
+#@ load("@ytt:data", "data")
+
+#@overlay/match by=overlay.subset({"kind": "List"})
+---
+items:
+#@overlay/match by=overlay.subset({"metadata": {"name": "eduk8s-operator"}})
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    name: eduk8s-operator
+  spec:
+    template:
+      spec:
+        containers:
+        #@overlay/match by=overlay.subset({"name": "eduk8s"})
+        - name: eduk8s
+          #@overlay/match missing_ok=True
+          env:
+          #@overlay/match by=overlay.subset({"name": "INGRESS_DOMAIN"}),missing_ok=True
+          - name: INGRESS_DOMAIN
+            value: #@ "ws.{}".format(data.values.ingress.domain)
+          #@overlay/match by=overlay.subset({"name": "INGRESS_SECRET"}),missing_ok=True
+          - name: INGRESS_SECRET
+            value: eduk8s-tls

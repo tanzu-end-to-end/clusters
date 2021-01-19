@@ -1,0 +1,11 @@
+#@ load("@ytt:yaml", "yaml")
+#@ load("config-layer2.lib.yaml", "config")
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: metallb-system
+  name: config
+data:
+  config: #@ yaml.encode(config())

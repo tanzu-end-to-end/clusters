@@ -1,0 +1,13 @@
+#@ load("@ytt:data", "data")
+#@ load("@ytt:overlay", "overlay")
+
+#@overlay/match by=overlay.subset({"metadata":{"name":"envoy"}, "kind": "Service"})
+---
+kind: Service
+metadata:
+  name: envoy
+  annotations:
+    #@overlay/match missing_ok=True
+    external-dns.alpha.kubernetes.io/hostname: #@ "*.{}.".format(data.values.ingress.domain)
+spec:
+  externalTrafficPolicy: Cluster

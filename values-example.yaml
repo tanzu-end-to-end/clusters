@@ -1,0 +1,52 @@
+#@data/values
+vsphere:
+  vcenter_server: vcenter.server.com
+  username: administrator@vsphere.local
+  password: "<encoded:Base 64 encoded password...>"
+  datacenter: Datacenter
+  cluster: Cluster
+  resource_pool: tkg
+  network: "VM Network"
+  datastore: DC01
+  vm_folder: tkg
+  haproxy_template: folder-name/photon-3-haproxy-v1.2.4+vmware.1
+tkg:
+  ssh_public_key: ssh-rsa AAAAB3N...
+  management_cluster:
+    haproxy:
+      cpu: 1
+      memory: 2048
+      disk: 30
+    controlplane:
+      cpu: 2
+      memory: 4096
+      disk: 30
+    worker:
+      cpu: 2
+      memory: 4096
+      disk: 30
+  guest_cluster:
+    haproxy:
+      cpu: 1
+      memory: 2048
+      disk: 30
+    controlplane:
+      cpu: 2
+      memory: 4096
+      disk: 30
+    worker:
+      cpu: 4
+      memory: 32768
+      disk: 100
+metallb:
+  addresses: 172.16.251.2-172.16.251.254
+  membersecret: enFucjZlRmg5SjkwcDFOK2ZUdVJRbks3dXVoOUlHQXgyNFpSUXJORG5ZTjVDaHpFUlQ2dVZDRzZsbTI5cmdvdQpYVG5WMDRwUGlKMk92M3h2NWlITWVrb09VQmN0UHlpWXNoc2h3TWZScnhqTUltK0FtWHlyL0NsTzdlVHRwQ3FhClhMVTVpOGtXbFFwT2tHU0lKRUZxbk1aZlA5RjlYbWhFQUNJL29jY3JadEU9
+ingress:
+  domain: demo.aws.grogscave.net
+acme:
+  email: YOU@vmware.com
+aws:
+  region: us-east-1
+  credentials:
+    secretKey: SECRET
+    accessKey: ACCESS
