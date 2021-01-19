@@ -19,7 +19,7 @@ items:
           env:
           #@overlay/match by=overlay.subset({"name": "INGRESS_DOMAIN"}),missing_ok=True
           - name: INGRESS_DOMAIN
-            value: #@ "ws.{}".format(data.values.ingress.domain)
+            value: #@ data.values.ingress.domain
           #@overlay/match by=overlay.subset({"name": "INGRESS_SECRET"}),missing_ok=True
           - name: INGRESS_SECRET
             value: eduk8s-tls

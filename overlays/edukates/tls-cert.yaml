@@ -6,9 +6,9 @@ metadata:
   name: eduk8s-tls
   namespace: eduk8s
 spec:
-  commonName: #@ "*.ws.{}".format(data.values.ingress.domain)
+  commonName: #@ "*.{}".format(data.values.ingress.domain)
   dnsNames:
-  - #@ "*.ws.{}".format(data.values.ingress.domain)
+  - #@ "*.{}".format(data.values.ingress.domain)
   duration: 2160h0m0s
   issuerRef:
     kind: ClusterIssuer
@@ -20,3 +20,13 @@ spec:
   - vmware
   renewBefore: 360h0m0s
   secretName: eduk8s-tls
+---
+apiVersion: projectcontour.io/v1
+kind: TLSCertificateDelegation
+metadata:
+  name: contour-delegation
+  namespace: eduk8s
+spec:
+  delegations:
+    - secretName: eduk8s-tls
+      targetNamespaces: ["*"]
