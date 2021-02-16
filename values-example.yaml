@@ -1,15 +1,16 @@
 #@data/values
+---
 vsphere:
   vcenter_server: vcenter.server.com
   username: administrator@vsphere.local
-  password: "<encoded:Base 64 encoded password...>"
+  password: <your-unencoded-vsphere-user-pw>
   datacenter: Datacenter
   cluster: Cluster
   resource_pool: tkg
   network: "VM Network"
   datastore: DC01
   vm_folder: tkg
-  haproxy_template: folder-name/photon-3-haproxy-v1.2.4+vmware.1
+  haproxy_template: <your-folder-name>/photon-3-haproxy-v1.2.4+vmware.1 # e.g. tkg/photon... the prefix "/Datacenter/vm/" will be added via ytt
 tkg:
   ssh_public_key: ssh-rsa AAAAB3N...
   management_cluster:
