@@ -1,5 +1,4 @@
 #@data/values
----
 vsphere:
   vcenter_server: vcenter.server.com
   username: administrator@vsphere.local
@@ -47,8 +46,11 @@ ingress:
   domain: demo.aws.grogscave.net
 acme:
   email: YOU@vmware.com
-aws: # Only required for Route53 to manage the domain
+aws: # Remove if you are not using Route53 to manage the domain / for external DNS
   region: us-east-1
   credentials:
     secretKey: SECRET
     accessKey: ACCESS
+gcp: # Remove if you are not using GCP to manage the domain / for external DNS
+  project: project-name
+  key: # Base64 encoded gcp.key.json file content
