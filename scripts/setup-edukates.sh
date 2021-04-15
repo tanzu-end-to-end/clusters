@@ -1,7 +1,7 @@
 #!/bin/bash
 VALUES_YAML=${1:-values.yaml}
 
-EDUKATES_TAG=20.12.03.1
+EDUKATES_TAG=21.04.14.1
 
 export KUBECONFIG=generated/kubeconfig-worker
 
