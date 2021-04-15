@@ -24,8 +24,10 @@ kapp deploy -a metallb -f https://raw.githubusercontent.com/metallb/metallb/$MET
 kapp deploy -a cert-manager -f extensions/tkg-extensions-v1.1.0/cert-manager/ -f <(ytt -f values.yaml -f overlays/cert-manager)
 
 # External DNS
+helm repo add bitnami https://charts.bitnami.com/bitnami
+kubectl create ns tanzu-system-ingress
 kapp deploy -a external-dns --into-ns tanzu-system-ingress \
-  -f <(helm template external-dns bitnami/external-dns -n tanzu-system-ingress -f <(ytt -f values.yaml -f overlays/external-dns/values.yaml))
+  -f <(helm template external-dns bitnami/external-dns -n tanzu-system-ingress -f <(ytt -f values.yaml -f overlays/external-dns/values.yaml)) -f <(ytt -f values.yaml -f overlays/external-dns/gcp-credentials-secret.yaml)
 
 # Contour (we use AWS because we have MetalLB installed.  The AWS scripts use LoadBalancers)
 kapp deploy -a contour \

@@ -35,6 +35,6 @@ TKG_CLUSTER_JSON=$($TKG_CMD --config generated/tkg-config-worker.yaml get cluste
 if [[ "$TKG_CLUSTER_JSON" != "" && $(echo $TKG_CLUSTER_JSON | jq length) -ge 1 ]]; then
   echo "Detected worker cluster already present"
 else
-  $TKG_CMD --config generated/tkg-config-worker.yaml create cluster -p dev -w 3 demo
+  $TKG_CMD --config generated/tkg-config-worker.yaml create cluster -p dev -c 3 -w 6 demo
 fi
 

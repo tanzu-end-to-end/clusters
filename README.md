@@ -9,6 +9,9 @@ You will need to install the following tools:
 * Helm
 * kubectl
 
+
+A network with a DHCP server to which to connect the cluster node VMs that Tanzu Kubernetes Grid deploys is required!
+
 These scripts assume you have already followed the [pre-reqs for TKG](https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid/1.1/vmware-tanzu-kubernetes-grid-11/GUID-install-tkg-vsphere.html#vsphere-permissions), and have [setup a storage policy](https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid/1.2/vmware-tanzu-kubernetes-grid-12/GUID-tanzu-k8s-clusters-storage.html#create-policy) to use for your default storage class.
 
 Additionally, you need to setup a Route53 zone to host the domain for your workshop ev

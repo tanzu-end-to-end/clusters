@@ -1,5 +1,4 @@
 #@data/values
----
 vsphere:
   vcenter_server: vcenter.server.com
   username: administrator@vsphere.local
@@ -7,7 +6,7 @@ vsphere:
   datacenter: Datacenter
   cluster: Cluster
   resource_pool: tkg
-  network: "VM Network"
+  network: "Extra" # DHCP is required
   datastore: DC01
   vm_folder: tkg
   haproxy_template: <your-folder-name>/photon-3-haproxy-v1.2.4+vmware.1 # e.g. tkg/photon... the prefix "/Datacenter/vm/" will be added via ytt
@@ -41,14 +40,17 @@ tkg:
       memory: 32768
       disk: 100
 metallb:
-  addresses: 172.16.251.2-172.16.251.254
+  addresses: 172.16.251.2-172.16.251.254 # Use a range outside of your DHCP range
   membersecret: enFucjZlRmg5SjkwcDFOK2ZUdVJRbks3dXVoOUlHQXgyNFpSUXJORG5ZTjVDaHpFUlQ2dVZDRzZsbTI5cmdvdQpYVG5WMDRwUGlKMk92M3h2NWlITWVrb09VQmN0UHlpWXNoc2h3TWZScnhqTUltK0FtWHlyL0NsTzdlVHRwQ3FhClhMVTVpOGtXbFFwT2tHU0lKRUZxbk1aZlA5RjlYbWhFQUNJL29jY3JadEU9
 ingress:
   domain: demo.aws.grogscave.net
 acme:
   email: YOU@vmware.com
-aws:
+aws: # Remove if you are not using Route53 to manage the domain / for external DNS
   region: us-east-1
   credentials:
     secretKey: SECRET
     accessKey: ACCESS
+gcp: # Remove if you are not using GCP to manage the domain / for external DNS
+  project: project-name
+  key: # Base64 encoded gcp.key.json file content

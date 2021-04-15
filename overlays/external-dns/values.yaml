@@ -1,4 +1,13 @@
 #@ load("@ytt:data", "data")
 ---
+#@ if data.values.aws != None:
 provider: aws
 aws: #@ data.values.aws
+#@ end
+#@ if data.values.gcp != None:
+provider: google
+google:
+  project: #@ data.values.gcp.project
+  serviceAccountSecret: gcp-credentials-secret
+  serviceAccountSecretKey: gcp.key.json
+#@ end
