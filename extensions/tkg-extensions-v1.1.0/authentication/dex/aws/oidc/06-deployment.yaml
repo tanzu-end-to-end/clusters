@@ -37,7 +37,7 @@ spec:
             secretKeyRef:
               key: clientSecret
               name: oidc
-        image: vmware-docker-tkg.bintray.io/dex:v2.22.0_vmware.1
+        image: registry.tkg.vmware.run/dex:v2.22.0_vmware.1
         imagePullPolicy: IfNotPresent
         name: dex
         ports:
