@@ -6075,7 +6075,7 @@ spec:
       serviceAccountName: cert-manager-cainjector
       containers:
         - name: cainjector
-          image: "vmware-docker-tkg.bintray.io/cert-manager/cert-manager-cainjector:v0.11.0_vmware.1"
+          image: "registry.tkg.vmware.run/cert-manager/cert-manager-cainjector:v0.11.0_vmware.1"
           imagePullPolicy: IfNotPresent
           args:
             - --v=2
@@ -6126,7 +6126,7 @@ spec:
       serviceAccountName: cert-manager
       containers:
         - name: cert-manager
-          image: "vmware-docker-tkg.bintray.io/cert-manager/cert-manager-controller:v0.11.0_vmware.1"
+          image: "registry.tkg.vmware.run/cert-manager/cert-manager-controller:v0.11.0_vmware.1"
           imagePullPolicy: IfNotPresent
           args:
             - --v=2
@@ -6183,7 +6183,7 @@ spec:
       serviceAccountName: cert-manager-webhook
       containers:
         - name: cert-manager
-          image: "vmware-docker-tkg.bintray.io/cert-manager/cert-manager-webhook:v0.11.0_vmware.1"
+          image: "registry.tkg.vmware.run/cert-manager/cert-manager-webhook:v0.11.0_vmware.1"
           imagePullPolicy: IfNotPresent
           args:
             - --v=2

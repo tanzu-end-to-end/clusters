@@ -29,7 +29,7 @@ spec:
         args:
           - envoy
           - shutdown-manager
-        image: vmware-docker-tkg.bintray.io/contour:v1.2.1_vmware.1
+        image: registry.tkg.vmware.run/contour:v1.2.1_vmware.1
         imagePullPolicy: IfNotPresent
         lifecycle:
           preStop:
@@ -52,7 +52,7 @@ spec:
         - --log-level info
         command:
         - envoy
-        image: vmware-docker-tkg.bintray.io/envoy:v1.13.1_vmware.1
+        image: registry.tkg.vmware.run/envoy:v1.13.1_vmware.1
         imagePullPolicy: IfNotPresent
         name: envoy
         env:
@@ -101,7 +101,7 @@ spec:
         - --envoy-key-file=/certs/tls.key
         command:
         - contour
-        image: vmware-docker-tkg.bintray.io/contour:v1.2.1_vmware.1
+        image: registry.tkg.vmware.run/contour:v1.2.1_vmware.1
         imagePullPolicy: IfNotPresent
         name: envoy-initconfig
         volumeMounts:

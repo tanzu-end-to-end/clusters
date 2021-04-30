@@ -48,7 +48,7 @@ spec:
         - --contour-key-file=/certs/tls.key
         - --config-path=/config/contour.yaml
         command: ["contour"]
-        image: vmware-docker-tkg.bintray.io/contour:v1.2.1_vmware.1
+        image: registry.tkg.vmware.run/contour:v1.2.1_vmware.1
         imagePullPolicy: IfNotPresent
         name: contour
         ports:
