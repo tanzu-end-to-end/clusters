@@ -1,6 +1,8 @@
 #@ load("@ytt:data", "data")
 ---
 #@ if data.values.aws != None:
+rbac:
+  pspEnabled: true
 provider: aws
 aws: #@ data.values.aws
 #@ end
